@@ -1,0 +1,21 @@
+def find_duplicate_anagrams(words):
+    # Hashmap to group anagrams
+    hashmap = {}
+
+    for word in words:
+        # Use sorted word as key
+        key = ''.join(sorted(word))
+
+        if key not in hashmap:
+            hashmap[key] = []
+        hashmap[key].append(word)
+
+    # Collect duplicate anagram groups
+    duplicates = [group for group in hashmap.values() if len(group) > 1]
+
+    return duplicates
+
+
+# Example usage
+words = ["listen", "silent", "enlist", "dog", "god", "cat"]
+print(find_duplicate_anagrams(words))
